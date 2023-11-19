@@ -15,9 +15,7 @@ userRouter.post("/signup", async (req,res) => {
     res.json(result);
 })
 
-userRouter.post("/login", loginMiddleware(), (req, res) => {
-    res.json({message: `Welcome!`})
-})
+userRouter.post("/login", loginMiddleware())
 
 userRouter.post("/logout", (req,res) => {
     res.clearCookie("Bearer");
