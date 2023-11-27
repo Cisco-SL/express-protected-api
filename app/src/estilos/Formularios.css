@@ -1,0 +1,50 @@
+/* form , form * {
+    border-radius: 10px;
+}
+form {
+    width: 60%;
+    text-align: center;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #111;
+    box-shadow: 0 2px 15px 5px #111;
+    margin: 25px auto;
+}
+
+input {
+    width: 80%;
+    padding: 5px;
+    text-align: center;
+    color: #ccc;
+    background-color: #222;
+    border: none;
+}
+
+input:focus {
+    outline-style: groove;
+    outline-color: #4513a1;
+}
+input::selection {
+    background-color: #4513a1;
+}
+
+button {
+    font-weight: bold;
+    color: #aaa;
+    padding: 5px 1rem;
+    background-color: #2d04798a;
+    border: none;
+    outline: none;
+    margin-bottom: 50px;
+}
+
+button:hover {
+    color: #ccc;
+    background-color: #4513a1;
+    box-shadow: 1px 0 10px 5px #4513a18c ;
+    cursor: pointer;
+} */

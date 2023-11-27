@@ -1,0 +1,59 @@
+#postForm {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--common-shadow);
+    padding: 1rem;
+}
+
+#postForm input {
+    width: 48%;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: var(--main-bg-color);
+    border: none;
+    border-bottom: 1px solid #666;
+    font-size: large;
+    outline: none;
+    color: black;
+}
+
+#postForm input[name="title"] {
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#postForm section {
+    display: flex;
+    justify-content: space-between;
+}
+
+#submitButton {
+    font-weight: bold;
+    color: #aaa;
+    padding: 0.5rem 1rem;
+    background-color: #555;
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+#submitButton:hover {
+    color: #ccc;
+    background-color: #333;
+    box-shadow: 0 1px 5px 1px #111;
+    cursor: pointer;
+}
+
+.quill {
+    border-radius: 100px;
+}
+
+.ql-editor {
+    background-color: #aaa;
+}
