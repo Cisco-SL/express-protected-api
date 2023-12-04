@@ -6,7 +6,7 @@ import { UserContext } from '../context/UserContextProvider';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-  const { setContextValue } = useContext(UserContext);
+  const { setUserContext } = useContext(UserContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +24,7 @@ export default function Login() {
         const res = await userService.login(credentials);
 
         if (res.ok) {
-          setContextValue(res.user);
+          setUserContext(res.user);
           navigate('/write', { replace: true });
         }
       }}>

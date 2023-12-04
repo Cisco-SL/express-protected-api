@@ -5,16 +5,11 @@ export const UserContext = createContext(null);
 
 
 export default function UserContextProvider(props) {
-/*   let initialValue = null;
-  try {
-    initialValue = JSON.parse(document.cookie.substring(/User=[*+]}/).split("=")[1]);
-} catch (err) {
-    console.log(err)
-} */
-  const [contextValue, setContextValue] = useState(null);
+
+  const [userContext, setUserContext] = useState("");
 
   return (
-    <UserContext.Provider value={{contextValue, setContextValue}}>
+    <UserContext.Provider value={{userContext, setUserContext}}>
         {props.children}
     </UserContext.Provider>
   )

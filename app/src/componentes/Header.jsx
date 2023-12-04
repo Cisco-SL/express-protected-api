@@ -5,12 +5,13 @@ import { useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContextProvider';
 
 export default function Header() {
-  const { contextValue, setContextValue } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const { userContext, setUserContext } = useContext(UserContext);
   useEffect(() => {
     fetch("http://localhost:5000/validate", {credentials: "include"})
-      .then(r => r.json().then(r => r.ok && setContextValue(r.user)))
+      .then(r => r.json().then(r => r.ok && setUserContext(r.user)))
   }, [])
-  const navigate = useNavigate();
   return (<>
     <header>
       <h2>
@@ -21,7 +22,7 @@ export default function Header() {
 
       <nav>
         <ul>
-          {!contextValue &&
+          {!userContext &&
             <li>
               <NavLink to="/signup" className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
@@ -29,7 +30,7 @@ export default function Header() {
                 SignUp
               </NavLink>
             </li>}
-          {!contextValue &&
+          {!userContext &&
             <li>
               <NavLink to="/login" className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
@@ -37,19 +38,19 @@ export default function Header() {
                 Login
               </NavLink>
             </li>}
-          {contextValue && <li>
+          {userContext && <li>
             <NavLink to="/write" className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
             }>Write</NavLink>
           </li>}
 
 
-          {contextValue &&
+          {userContext &&
             <li>
               <NavLink to="/logout" onClick={async e => {
                 e.preventDefault();
                 userService.logout();
-                setContextValue(null);
+                setUserContext(null);
                 navigate('/', { replace: true });
               }}>
                 Logout

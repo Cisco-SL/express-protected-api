@@ -1,4 +1,5 @@
 const PostRouter = require('express').Router();
+const bodyParser = require('body-parser');
 const myCustomFilter = require('../middleware/MyCustomFilter')
 const Post = require("../models/Post")
 const multer = require('multer');
@@ -61,15 +62,15 @@ PostRouter.get("/post/:postId", async (req, res) => {
   }
 });
 
-PostRouter.patch("/post/:postId", myCustomFilter(), async (req, res) => {
+PostRouter.put("/post/:postId", async (req, res) => {
   try {
     const post = await Post.findById(req.params.postId);
-    const { body } = req.body;
+    const { title, body, tags } = req.body;
+    post.title = title;
     post.body = body;
-    await post.save();
-    res.json({
-      ok: true,
-    })
+    post.tags = tags;
+    post.save();
+    res.json({msg : "que ganas de tirar todo a la mierdas"})
   } catch (err) {
     res.json({
       ok: false,

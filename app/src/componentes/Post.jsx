@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { UserContext } from '../context/UserContextProvider';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Post() {
-    const { contextValue, setContextValue } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const { userContext, setUserContext } = useContext(UserContext);
 
     const { id } = useParams();
     const [post, setPost] = useState("");
@@ -32,8 +34,8 @@ export default function Post() {
                 textAlign: "center",
                 marginBottom: "1rem"
             }}>
-                {contextValue && <div>
-                    <NavLink to="/edit" >Editar</NavLink>
+                {userContext && <div>
+                    <NavLink to={`/post/${id}/edit`} >Editar</NavLink>
                 </div>}
                 <h1>{post.title}</h1>
             </section>

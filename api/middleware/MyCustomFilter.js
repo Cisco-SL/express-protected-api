@@ -8,7 +8,6 @@ module.exports = function myCustomFIlter() {
         
         const bearer = req.cookies.Bearer;
         try {
-
             if (!bearer) 
                 throw new Error("Primero tenés que iniciar sesión.");
 

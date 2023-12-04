@@ -25,7 +25,7 @@ module.exports = function login() {
 
             token = jwt.sign(user, SECRET,
                 {
-                    expiresIn: "2h"
+                    expiresIn: "7d"
                 })
             res.cookie("Bearer", token, {
                 httpOnly: true,
