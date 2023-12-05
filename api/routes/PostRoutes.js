@@ -23,12 +23,13 @@ PostRouter.post("/post", myCustomFilter(), upload.single("img"),
       });
 
     } else {
-      const { title, body, tags } = req.body;
+      const { title, summary, body, tags } = req.body;
       const img = req.file.filename;
       const user_id = req.token._id;
       const post = await Post.create({
         author: user_id,
         title,
+        summary,
         body,
         tags,
         img
@@ -65,8 +66,9 @@ PostRouter.get("/post/:postId", async (req, res) => {
 PostRouter.put("/post/:postId", async (req, res) => {
   try {
     const post = await Post.findById(req.params.postId);
-    const { title, body, tags } = req.body;
+    const { title, summary, body, tags } = req.body;
     post.title = title;
+    post.summary = summary;
     post.body = body;
     post.tags = tags;
     post.save();

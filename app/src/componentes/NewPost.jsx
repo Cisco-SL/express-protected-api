@@ -7,6 +7,7 @@ import Editor from './Editor';
 export default function NewPost() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
+  const [summary, setSummary] = useState("");
   const [body, setBody] = useState("");
   const [tags, setTags] = useState("");
   const [img, setImg] = useState("");
@@ -16,9 +17,10 @@ export default function NewPost() {
     const post = new FormData();
     post.set("title", title);
     post.set("body", body);
+    post.set("summary", summary);
     post.set("tags", tags);
     post.set("img", img);
-    const res = await fetch("http://localhost:5000/post",
+    fetch("http://localhost:5000/post",
       {
         "method": "POST",
         "mode": "cors",
@@ -40,7 +42,8 @@ export default function NewPost() {
 
       <input value={title} name="title" htmlFor="title" placeholder='Set a title'
         onChange={e => setTitle(e.target.value)} />
-
+      <input value={summary} name="summary" htmlFor="summary" placeholder='Summary'
+        onChange={e => setSummary(e.target.value)} />
       <section style={{
         margin: "1rem auto",
         marginBottom: "3rem"
@@ -57,7 +60,7 @@ export default function NewPost() {
           onChange={e => setImg(e.target.files[0])}
         />
       </section>
-      
+
       <button id="submitButton" type='submit'>Post</button>
     </form>
   )

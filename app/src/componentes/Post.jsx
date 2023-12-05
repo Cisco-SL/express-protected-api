@@ -40,6 +40,9 @@ export default function Post() {
                 <h1>{post.title}</h1>
             </section>
 
+            <section>
+                <p>{post.summary}</p>
+            </section>
             <section
                 dangerouslySetInnerHTML={{ __html: post.body }}>
             </section>

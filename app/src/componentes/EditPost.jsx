@@ -6,6 +6,7 @@ import Editor from './Editor';
 export default function EditPost() {
     const { id } = useParams();
     const [title, setTitle] = useState("");
+    const [summary, setSummary] = useState("");
     const [body, setBody] = useState("");
     const [tags, setTags] = useState("");
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function EditPost() {
             .then(r => r.json()
                 .then(r => {
                     setTitle(r.title);
+                    setSummary(r.summary);
                     setBody(r.body);
                     setTags(r.tags);
                 }))
@@ -32,6 +34,7 @@ export default function EditPost() {
                 },
                 "body": JSON.stringify({
                     title,
+                    summary,
                     body,
                     tags
                 }),
@@ -46,6 +49,9 @@ export default function EditPost() {
             <input value={title} name="title" htmlFor="title" placeholder='Set a title'
                 onChange={e => setTitle(e.target.value)} />
 
+            <input value={summary} name="summary" htmlFor="summary" placeholder='Summary'
+                onChange={e => setSummary(e.target.value)} />
+                
             <section style={{
                 margin: "1rem auto",
                 marginBottom: "3rem"

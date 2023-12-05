@@ -13,7 +13,7 @@ export default function Card(props) {
             <section style={{ display: "flex", width: "100%", flexDirection: "column", justifyContent: "space-between" }}>
                 <section>
                     <NavLink to={`/post/${post._id}`}><h2>{post.title}</h2></NavLink>
-                    <div dangerouslySetInnerHTML={{ __html: post.body }}></div>
+                    <div dangerouslySetInnerHTML={{ __html: post.summary }}></div>
                 </section>
                 <section style={{ display: "flex", justifyContent: "space-between" }}>
                     {/* <p>Tags: {post.tags}</p> */}
